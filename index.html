@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Periodic Table</title>
+  <link href="./css/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+  <h1>Periodic Table</h1>
+
+    <!-- Controls -->
+  <div class="controls">
+    <input type="text" id="searchBox" placeholder="Search element..." />
+    <button onclick="filterCategory('metalloid')">Metalloids</button>
+    <button onclick="filterCategory('noble-gas')">Noble Gases</button>
+    <button onclick="filterCategory('')">Show All</button>
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+  </div>
+
+  <h5>Click on an element for more info...</h5>
+
+  <!-- Periodic table grid -->
+  <div class="periodic-grid">
+    <div class="element reactive" style="grid-column: 1;" data-symbol="H">H</div> <!-- use data-symbol attribute to store element details-->
+    <div class="element other" style="grid-column: 18;" data-symbol="He">He</div>
+
+    <div class="element post-trans" style="grid-row: 2; grid-column: 1;" data-symbol="Li">Li</div>
+    <div class="element trans-met" style="grid-row: 2; grid-column: 2;" data-symbol="Be">Be</div>
+    <div class="element metalloid" style="grid-row: 2; grid-column: 13;" data-symbol="B">B</div>
+    <div class="element alk-met" style="grid-row: 2; grid-column: 14;" data-symbol="C">C</div>
+    <div class="element alk-met" style="grid-row: 2; grid-column: 15;" data-symbol="N">N</div>
+    <div class="element alk-met" style="grid-row: 2; grid-column: 16;" data-symbol="O">O</div>
+    <div class="element alk-met" style="grid-row: 2; grid-column: 17;" data-symbol="F">F</div>
+    <div class="element other" style="grid-row: 2; grid-column: 18;" data-symbol="Ne">Ne</div>
+
+    <div class="element post-trans" style="grid-row: 3; grid-column: 1;" data-symbol="Na">Na</div>
+    <div class="element trans-met" style="grid-row: 3; grid-column: 2;" data-symbol="Mg">Mg</div>
+    <div class="element alk-earth" style="grid-row: 3; grid-column: 13;" data-symbol="Al">Al</div>
+    <div class="element metalloid" style="grid-row: 3; grid-column: 14;" data-symbol="Si">Si</div>
+    <div class="element alk-met" style="grid-row: 3; grid-column: 15;" data-symbol="P">P</div>
+    <div class="element alk-met" style="grid-row: 3; grid-column: 16;" data-symbol="S">S</div>
+    <div class="element alk-met" style="grid-row: 3; grid-column: 17;" data-symbol="Cl">Cl</div>
+    <div class="element other" style="grid-row: 3; grid-column: 18;" data-symbol="Ar">Ar</div>
+
+    <div class="element post-trans" style="grid-row: 4; grid-column: 1;" data-symbol="K">K</div>
+    <div class="element trans-met" style="grid-row: 4; grid-column: 2;" data-symbol="Ca">Ca</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 3;" data-symbol="Sc">Sc</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 4;" data-symbol="Ti">Ti</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 5;" data-symbol="V">V</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 6;" data-symbol="Cr">Cr</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 7;" data-symbol="Mn">Mn</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 8;" data-symbol="Fe">Fe</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 9;" data-symbol="">Co</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 10;" data-symbol="Ni">Ni</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 11;" data-symbol="Cu">Cu</div>
+    <div class="element noble-gas" style="grid-row: 4; grid-column: 12;" data-symbol="Zn">Zn</div>
+    <div class="element alk-earth" style="grid-row: 4; grid-column: 13;" data-symbol="Ga">Ga</div>
+    <div class="element metalloid" style="grid-row: 4; grid-column: 14;" data-symbol="Ge">Ge</div>
+    <div class="element metalloid" style="grid-row: 4; grid-column: 15;" data-symbol="As">As</div>
+    <div class="element alk-met" style="grid-row: 4; grid-column: 16;" data-symbol="Se">Se</div>
+    <div class="element alk-met" style="grid-row: 4; grid-column: 17;" data-symbol="Br">Br</div>
+    <div class="element other" style="grid-row: 4; grid-column: 18;" data-symbol="Kr">Kr</div>
+
+    <div class="element post-trans" style="grid-row: 5; grid-column: 1;" data-symbol="Rb">Rb</div>
+    <div class="element trans-met" style="grid-row: 5; grid-column: 2;" data-symbol="Sr">Sr</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 3;" data-symbol="Y">Y</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 4;" data-symbol="Zr">Zr</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 5;" data-symbol="Nb">Nb</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 6;" data-symbol="Mo">Mo</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 7;" data-symbol="Tc">Tc</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 8;" data-symbol="Ru">Ru</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 9;" data-symbol="Rh">Rh</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 10;" data-symbol="Pd">Pd</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 11;" data-symbol="Ag">Ag</div>
+    <div class="element noble-gas" style="grid-row: 5; grid-column: 12;" data-symbol="Cd">Cd</div>
+    <div class="element alk-earth" style="grid-row: 5; grid-column: 13;" data-symbol="In">In</div>
+    <div class="element alk-earth" style="grid-row: 5; grid-column: 14;" data-symbol="Sn">Sn</div>
+    <div class="element metalloid" style="grid-row: 5; grid-column: 15;" data-symbol="Sb">Sb</div>
+    <div class="element metalloid" style="grid-row: 5; grid-column: 16;" data-symbol="Te">Te</div>
+    <div class="element alk-met" style="grid-row: 5; grid-column: 17;" data-symbol="I">I</div>
+    <div class="element other" style="grid-row: 5; grid-column: 18;" data-symbol="Xe">Xe</div>
+
+    <div class="element post-trans" style="grid-row: 6; grid-column: 1;" data-symbol="Cs">Cs</div>
+    <div class="element trans-met" style="grid-row: 6; grid-column: 2;" data-symbol="Ba">Ba</div>
+    <div class="element lanthanides" style="grid-row: 6; grid-column: 3;" data-symbol="La">La</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 4;" data-symbol="Hf">Hf</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 5;" data-symbol="Ta">Ta</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 6;" data-symbol="W">W</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 7;" data-symbol="Re">Re</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 8;" data-symbol="Os">Os</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 9;" data-symbol="Ir">Ir</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 10;" data-symbol="Pt">Pt</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 11;" data-symbol="Au">Au</div>
+    <div class="element noble-gas" style="grid-row: 6; grid-column: 12;" data-symbol="Hg">Hg</div>
+    <div class="element alk-earth" style="grid-row: 6; grid-column: 13;" data-symbol="Tl">Tl</div>
+    <div class="element alk-earth" style="grid-row: 6; grid-column: 14;" data-symbol="Pb">Pb</div>
+    <div class="element alk-earth" style="grid-row: 6; grid-column: 15;" data-symbol="Bi">Bi</div>
+    <div class="element alk-earth" style="grid-row: 6; grid-column: 16;" data-symbol="Po">Po</div>
+    <div class="element alk-earth" style="grid-row: 6; grid-column: 17;" data-symbol="At">At</div>
+    <div class="element other" style="grid-row: 6; grid-column: 18;" data-symbol="Rn">Rn</div>
+
+    <div class="element post-trans" style="grid-row: 7; grid-column: 1;" data-symbol="Fr">Fr</div>
+    <div class="element trans-met" style="grid-row: 7; grid-column: 2;" data-symbol="Ra">Ra</div>
+    <div class="element actinides" style="grid-row: 7; grid-column: 3;" data-symbol="Ac">Ac</div>
+    <div class="element noble-gas" style="grid-row: 7; grid-column: 4;" data-symbol="Rf">Rf</div>
+    <div class="element noble-gas" style="grid-row: 7; grid-column: 5;" data-symbol="Db">Db</div>
+    <div class="element noble-gas" style="grid-row: 7; grid-column: 6;" data-symbol="Sg">Sg</div>
+    <div class="element noble-gas" style="grid-row: 7; grid-column: 7;" data-symbol="Bh">Bh</div>
+    <div class="element noble-gas" style="grid-row: 7; grid-column: 8;" data-symbol="Hs">Hs</div>
+    <div class="element" style="grid-row: 7; grid-column: 9;" data-symbol="Mt">Mt</div>
+    <div class="element" style="grid-row: 7; grid-column: 10;" data-symbol="Ds">Ds</div>
+    <div class="element" style="grid-row: 7; grid-column: 11;" data-symbol="Rg">Rg</div>
+    <div class="element" style="grid-row: 7; grid-column: 12;" data-symbol="Cn">Cn</div>
+    <div class="element" style="grid-row: 7; grid-column: 13;" data-symbol="Nh">Nh</div>
+    <div class="element" style="grid-row: 7; grid-column: 14;" data-symbol="Fl">Fl</div>
+    <div class="element" style="grid-row: 7; grid-column: 15;" data-symbol="Mc">Mc</div>
+    <div class="element" style="grid-row: 7; grid-column: 16;" data-symbol="Lv">Lv</div>
+    <div class="element" style="grid-row: 7; grid-column: 17;" data-symbol="Ts">Ts</div>
+    <div class="element" style="grid-row: 7; grid-column: 18;" data-symbol="Og">Og</div>
+
+    
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 4;" data-symbol="Ce">Ce</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 5;" data-symbol="Pr">Pr</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 6;" data-symbol="Nd">Nd</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 7;" data-symbol="Pm">Pm</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 8;" data-symbol="Sm">Sm</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 9;" data-symbol="Eu">Eu</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 10;" data-symbol="Gd">Gd</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 11;" data-symbol="Tb">Tb</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 12;" data-symbol="Dy">Dy</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 13;" data-symbol="Ho">Ho</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 14;" data-symbol="Er">Er</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 15;" data-symbol="Tm">Tm</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 16;" data-symbol="Yb">Yb</div>
+    <div class="element lanthanides" style="grid-row: 8; grid-column: 17;" data-symbol="Lu">Lu</div>
+
+    <div class="element actinides" style="grid-row: 9; grid-column: 4;" data-symbol="Th">Th</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 5;" data-symbol="Pa">Pa</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 6;" data-symbol="U">U</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 7;" data-symbol="Np">Np</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 8;" data-symbol="Pu">Pu</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 9;" data-symbol="Am">Am</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 10;" data-symbol="Cm">Cm</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 11;" data-symbol="Bk">Bk</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 12;" data-symbol="Cf">Cf</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 13;" data-symbol="Es">Es</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 14;" data-symbol="Fm">Fm</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 15;" data-symbol="Md">Md</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 16;" data-symbol="No">No</div>
+    <div class="element actinides" style="grid-row: 9; grid-column: 17;" data-symbol="Lr">Lr</div>
+    
+  </div>
+
+  
+  <!-- Bootstrap Modal -->
+  <div
+    class="modal fade"
+    id="elementModal"
+    tabindex="-1"
+    aria-labelledby="elementModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="elementModalLabel">Element Details</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <h4 id="elementName"></h4>
+          <p id="elementDescription"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fallback Image -->
+  <div class="fallback-image">
+    <img src="periodic.png" alt="Periodic Table Fallback">
+  </div>
+  <!-- Bootsrap -->
+  <script src="./scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

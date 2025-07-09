@@ -169,7 +169,3 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
 
-// Hide Fallback Image on Load
-window.addEventListener('load', () => {
-  document.querySelector('.fallback-image').style.display = 'none';
-});
